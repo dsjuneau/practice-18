@@ -21,3 +21,5 @@ drawCircle(100, 200, 50);
 canvas.addEventListener("click", (e) => {
   drawCircle(e.clientX, e.clientY, 50);
 });
+
+

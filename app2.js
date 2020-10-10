@@ -1,5 +1,4 @@
 const canvas = document.querySelector("canvas");
-console.log(canvas);
 let c = canvas.getContext("2d");
 
 const sizeWindow = () => {
