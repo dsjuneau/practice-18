@@ -9,8 +9,18 @@ const sizeWindow = () => {
 sizeWindow();
 window.onresize = sizeWindow;
 
-const drawCircle = (x, y, r) => {
-  c.fillStyle = "red";
+const randomColor = ()=>{
+    const r = Math.floor(Math.random()*266);
+    const g = Math.floor(Math.random()*266);
+    const b = Math.floor(Math.random()*266);
+    return `rgb(${r}, ${g}, ${b})`
+}
+
+
+const drawCircle = (x, y, r, color) => {
+
+
+  c.fillStyle = color;
   c.beginPath();
   c.ellipse(x, y, r, r, 0, 0, 2 * Math.PI);
   c.fill();
@@ -23,6 +33,7 @@ canvas.addEventListener("click", (e) => {
         x: e.clientX,
         y: e.clientY,
         r: 50,
+        c: randomColor(),
         dx: Math.floor(Math.random()*7)-3,
         dy: Math.floor(Math.random()*7)-3
     })
@@ -45,6 +56,7 @@ const spots = [{
     x: 100, 
     y: 200,
     r: 50,
+    c: randomColor(),
     dx: 3, 
     dy: 4
 }];
@@ -52,7 +64,7 @@ const spots = [{
 const drawIt = ()=>  {
     c.clearRect(0, 0, canvas.width, canvas.height);
     spots.forEach(spot =>{
-        drawCircle(spot.x, spot.y, spot.r);
+        drawCircle(spot.x, spot.y, spot.r, spot.c);
        spot = updateSpot(spot);
     })
     requestAnimationFrame(drawIt);
